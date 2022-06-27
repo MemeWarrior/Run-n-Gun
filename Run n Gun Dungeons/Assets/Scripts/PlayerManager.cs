@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     float horizontal;
     float vertical;
 
-    public float speed = 20.0f;
+    private float speed = 15.0f;
     private float moveLimiter = 0.7f;
 
     // Start is called before the first frame update
