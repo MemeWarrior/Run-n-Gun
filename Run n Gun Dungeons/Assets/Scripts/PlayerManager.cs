@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     float vertical;
 
     public float speed = 20.0f;
+    private float moveLimiter = 0.7f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,12 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {  
+        if (horizontal != 0 && vertical != 0) // Check for diagonal movement and limits diagonal speed
+        {
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
+        }
+
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
 }
