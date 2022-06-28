@@ -21,7 +21,7 @@ public class GenerateDungeon : MonoBehaviour
     public void runProceduralGeneration()
     {
         HashSet<Vector2Int> floorPos = RunRandomWalk();
-
+        TileMapVisualizer.Clear();
         foreach(var position in floorPos)
         {
             TileMapVisualizer.paintFloorTiles(floorPos);
