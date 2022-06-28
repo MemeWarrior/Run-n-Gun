@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     private Transform player;
-    public float lineOfSitel
+    public float lineOfSitel;
 
     void Start()
     {
@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite)
-        transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.detalTime);
+        {
+          transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.detalTime);
+        }
     }
-  
+}

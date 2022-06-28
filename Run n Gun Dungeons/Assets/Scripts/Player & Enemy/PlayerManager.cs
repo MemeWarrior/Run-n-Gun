@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody rb;
 
     Vector2 movement;
-    
+
     void Update(){
         MovementInput();
 
@@ -21,10 +21,9 @@ public class PlayerManager : MonoBehaviour
 
     void MovementInput()
     {
-        float mx = Input.GetAxisRaw.("Horizontal");
-        float my = Input.GetAxisRaw.("Vertical");
+        float mx = Input.GetAxisRaw("Horizontal");
+        float my = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(mx.my).normalized;
     }
-
-    
+}
