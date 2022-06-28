@@ -15,6 +15,8 @@ public class GenerateDungeon : MonoBehaviour
     public int walkLength = 10;
     [SerializeField]
     public bool startRandomlyEachIteration = true;
+    [SerializeField]
+    private TileMapVisualizer TileMapVisualizer;
 
     public void runProceduralGeneration()
     {
@@ -22,7 +24,7 @@ public class GenerateDungeon : MonoBehaviour
 
         foreach(var position in floorPos)
         {
-            Debug.Log(position);
+            TileMapVisualizer.paintFloorTiles(floorPos);
         }
     }
 
