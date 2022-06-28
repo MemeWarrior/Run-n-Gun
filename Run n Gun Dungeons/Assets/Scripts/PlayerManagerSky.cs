@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagerSky : MonoBehaviour
 {
     Rigidbody2D body;
 
@@ -15,18 +15,18 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Rigidbody2D>(); 
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical"); 
+        vertical = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
-    {  
+    {
         if (horizontal != 0 && vertical != 0) // Check for diagonal movement and limits diagonal speed
         {
             horizontal *= moveLimiter;
