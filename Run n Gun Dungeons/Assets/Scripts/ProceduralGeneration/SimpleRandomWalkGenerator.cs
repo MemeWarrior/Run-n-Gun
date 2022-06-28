@@ -4,21 +4,17 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class GenerateDungeon : MonoBehaviour
+public class SimpleRandomWalkGenerator : AbstractDungeonGenerator
 {
-    [SerializeField]
-    protected Vector2Int startPos = Vector2Int.zero;
-
     [SerializeField]
     private int iterations = 10;
     [SerializeField]
     public int walkLength = 10;
     [SerializeField]
     public bool startRandomlyEachIteration = true;
-    [SerializeField]
-    private TileMapVisualizer TileMapVisualizer;
 
-    public void runProceduralGeneration()
+
+    protected override void RunProceduralGeneration()
     {
         HashSet<Vector2Int> floorPos = RunRandomWalk();
         TileMapVisualizer.Clear();
@@ -42,6 +38,6 @@ public class GenerateDungeon : MonoBehaviour
                 currentPos = floorPos.ElementAt(Random.Range(0,floorPos.Count));
         }
         return floorPos;
-    }   
-    
+    }
+
 }

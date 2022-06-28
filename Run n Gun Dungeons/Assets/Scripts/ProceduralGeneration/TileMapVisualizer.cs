@@ -9,7 +9,7 @@ public class TileMapVisualizer : MonoBehaviour
     private Tilemap floorTilemap;
     public TileBase floorTile; //Change to array of tiles later
 
-    public void paintFloorTiles(IEnumerable<Vector2Int> floorPos) 
+    public void paintFloorTiles(IEnumerable<Vector2Int> floorPos)
     {
         paintTiles(floorPos, floorTilemap, floorTile);
     }

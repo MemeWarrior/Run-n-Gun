@@ -396,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1055514631}
-  - component: {fileID: 1055514630}
+  - component: {fileID: 1055514632}
   m_Layer: 0
   m_Name: TilemapVisualizer
   m_TagString: Untagged
@@ -404,20 +404,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1055514630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055514629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782d70e3e2d8f20428e81641d0ff86e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorTilemap: {fileID: 1967960577}
-  floorTile: {fileID: 11400000, guid: ab6eacbae80e76d47aabfc6879443cb6, type: 2}
 --- !u!4 &1055514631
 Transform:
   m_ObjectHideFlags: 0
@@ -432,6 +418,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055514632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055514629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185817daa3bfac84abadfdeadba9ea17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorTilemap: {fileID: 1967960577}
+  floorTile: {fileID: 11400000, guid: ab6eacbae80e76d47aabfc6879443cb6, type: 2}
 --- !u!1 &1178920406
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,9 +581,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1898251883}
+      - m_Target: {fileID: 11500000, guid: e57215290302cdc4a8ab9dfc96605dcb, type: 3}
         m_TargetAssemblyTypeName: GenerateDungeon, Assembly-CSharp
-        m_MethodName: runProceduralGeneration
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898251884}
-  - component: {fileID: 1898251883}
+  - component: {fileID: 1898251885}
   m_Layer: 0
   m_Name: GenerationHandler
   m_TagString: Untagged
@@ -692,23 +692,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1898251883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898251882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebe8afdc6d76d34cb587059195c4bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  iterations: 10
-  walkLength: 10
-  startRandomlyEachIteration: 1
-  TileMapVisualizer: {fileID: 1055514630}
 --- !u!4 &1898251884
 Transform:
   m_ObjectHideFlags: 0
@@ -723,6 +706,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898251885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898251882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57215290302cdc4a8ab9dfc96605dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapVisualizer: {fileID: 0}
+  startPos: {x: 0, y: 0}
+  iterations: 10
+  walkLength: 10
+  startRandomlyEachIteration: 1
+  TileMapVisualizer: {fileID: 1055514632}
 --- !u!1 &1967960574
 GameObject:
   m_ObjectHideFlags: 0
