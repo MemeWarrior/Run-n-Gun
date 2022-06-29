@@ -15,6 +15,9 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
   [SerializeField]
   public SRWData roomGenerationParams;
 
+  private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+  private HashSet<Vector2Int> floorPos, corPos;
+
   protected override void RunProceduralGeneration()
   {
     CorridorFirstGeneration();
@@ -81,6 +84,8 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
     foreach (var roomPosition in roomsToCreate)
     {
       var roomFloor = RunRandomWalk(randWalkParams, roomPosition);
+
+      SaveRoomData(roomPosition, roomFloor);
       roomPos.UnionWith(roomFloor);
     }
     return roomPos;
@@ -98,5 +103,16 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
       potRoomPos.Add(currentPos);
       floorPos.UnionWith(corridor);
     }
+    corPos = new HashSet<Vector2Int>(floorPos);
+  }
+
+  private void ClearRoomData()
+  {
+      roomsDict.Clear();
+  }
+
+  private void SaveRoomData(Vector2Int roomPosition, HashSet<Vector2Int> roomFloor)
+  {
+      roomsDict[roomPosition] = roomFloor;
   }
 }
