@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     private Transform player;
     public float lineOfSite;
+    public float AttackingRange;
 
     void Start()
     {
@@ -17,9 +18,19 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
-        if (distanceFromPlayer < lineOfSite)
+        if (distanceFromPlayer < lineOfSite && distanceFromPlayer > AttackingRange)
         {
-          transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
+
+        else if (distanceFromPlayer >= AttackingRange) ;
+        
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, lineOfSite);
+        Gizmos.DrawWireSphere(transform.position, AttackingRange);
     }
 }

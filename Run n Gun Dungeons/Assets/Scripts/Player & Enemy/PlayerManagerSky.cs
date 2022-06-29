@@ -11,6 +11,7 @@ public class PlayerManagerSky : MonoBehaviour
 
     private float speed = 8.0f;
     private float moveLimiter = 0.7f;
+    public GameObject currentweapon;
 
     // Start is called before the first frame update
     void Start()

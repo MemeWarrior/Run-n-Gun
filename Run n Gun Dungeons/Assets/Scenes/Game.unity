@@ -17719,6 +17719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f003925ca739349b4b88fd83d00050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentweapon: {fileID: 0}
 --- !u!61 &863733594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17930,7 +17931,7 @@ MonoBehaviour:
   target: {fileID: 863733598}
   cameraOffset: {x: 0, y: 0, z: -6}
   followSpeed: 7
-  xMin: 0
+  xMin: -100
 --- !u!1 &1062315761
 GameObject:
   m_ObjectHideFlags: 0
