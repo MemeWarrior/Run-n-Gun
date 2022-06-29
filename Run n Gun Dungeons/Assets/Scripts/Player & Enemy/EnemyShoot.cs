@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
     public float speed;
     private Transform player;
     public float lineOfSite;
     public float AttackingRange;
+    public float shootingRange;
     public GameObject bullet;
     public GameObject bulletParent;
-    private Transform player;
+    
 
     void Start()
     {
@@ -24,10 +25,6 @@ public class Enemy2 : MonoBehaviour
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > AttackingRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
-        }
-        else if (distanceFromPlayer <= AttackingRange)
-        {
-            Instantiate(bullet,)
         }
     }
 
