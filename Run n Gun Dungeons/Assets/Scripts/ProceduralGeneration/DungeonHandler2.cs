@@ -15,6 +15,9 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
   [SerializeField]
   public SRWData roomGenerationParams;
 
+  private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+  private HashSet<Vector2Int> floorPos, corPos;
+
   protected override void RunProceduralGeneration()
   {
     CorridorFirstGeneration();
@@ -28,11 +31,48 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
     CreateCorridors(floorPos, potRoomPos);
 
     HashSet<Vector2Int> roomPos = CreateRooms(potRoomPos);
+    List<Vector2Int> deadEnds = FindDeadEnds(floorPos);
+    CreateRoomsAtDeadEnd(deadEnds, roomPos);
 
     floorPos.UnionWith(roomPos);
 
     TileMapVisualizer.paintFloorTiles(floorPos);
     WallHandler.createWalls(floorPos, TileMapVisualizer);
+  }
+
+  private List<Vector2Int> FindDeadEnds(HashSet<Vector2Int> floorPos)
+  {
+    List<Vector2Int> deadEnds = new List<Vector2Int>();
+    foreach (var position in floorPos)
+    {
+      int neighborsCount = 0;
+
+      foreach (var direction in direction2D.cardinalDirectionsList)
+      {
+        if(floorPos.Contains(position+direction))
+        {
+          neighborsCount++;
+        }
+      }
+
+      if(neighborsCount == 1)
+      {
+        deadEnds.Add(position);
+      }
+    }
+    return deadEnds;
+  }
+
+  private void CreateRoomsAtDeadEnd(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomPos)
+  {
+    foreach (var position in deadEnds)
+    {
+      if(roomPos.Contains(position) == false)
+      {
+        var room = RunRandomWalk(randWalkParams, position);
+        roomPos.UnionWith(room);
+      }
+    }
   }
 
   private HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potRoomPos)
@@ -44,6 +84,8 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
     foreach (var roomPosition in roomsToCreate)
     {
       var roomFloor = RunRandomWalk(randWalkParams, roomPosition);
+
+      SaveRoomData(roomPosition, roomFloor);
       roomPos.UnionWith(roomFloor);
     }
     return roomPos;
@@ -61,5 +103,16 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
       potRoomPos.Add(currentPos);
       floorPos.UnionWith(corridor);
     }
+    corPos = new HashSet<Vector2Int>(floorPos);
+  }
+
+  private void ClearRoomData()
+  {
+      roomsDict.Clear();
+  }
+
+  private void SaveRoomData(Vector2Int roomPosition, HashSet<Vector2Int> roomFloor)
+  {
+      roomsDict[roomPosition] = roomFloor;
   }
 }

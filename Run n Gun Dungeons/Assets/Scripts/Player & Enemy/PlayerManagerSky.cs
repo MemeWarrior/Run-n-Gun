@@ -9,7 +9,7 @@ public class PlayerManagerSky : MonoBehaviour
     float horizontal;
     float vertical;
 
-    private float speed = 15.0f;
+    private float speed = 8.0f;
     private float moveLimiter = 0.7f;
 
     // Start is called before the first frame update
