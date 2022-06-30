@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     public float lineOfSite;
     public float AttackingRange;
+    public float health;
 
     void Start()
     {
@@ -17,6 +18,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > AttackingRange)
         {
