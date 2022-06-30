@@ -17,7 +17,7 @@ public class TileMapVisualizer : MonoBehaviour
     public GameObject spawn;
     private List<Vector2Int> objectLocations = new List<Vector2Int>();
 
-    private float enemyDensity = 0.0008f;
+    private float enemyDensity = 0.008f;
     private float objectDensity = 0.1f;
 
 
@@ -39,8 +39,8 @@ public class TileMapVisualizer : MonoBehaviour
 
         //Place enemies
         int enemiesCount = Mathf.RoundToInt(floorPos.Count()*enemyDensity);
-        // Debug.Log("Tiles: " + floorPos.Count());
-        // Debug.Log("Objects: "+ objectCount);
+        Debug.Log("Tiles: " + floorPos.Count());
+        Debug.Log("Objects: "+ objectCount);
 
         List<Vector2Int> enemiesToCreate = floorPos.OrderBy( x => Random.value ).Take(objectCount).ToList();
         placeEnemies(enemiesToCreate);
@@ -64,7 +64,6 @@ public class TileMapVisualizer : MonoBehaviour
     internal void PaintSingleBasicWall(Vector2Int pos)
     {
       paintSingleTile(wallTilemap, wallTile, pos);
-      Debug.Log("painting walls!");
     }
 
     private void placeObjects(List<Vector2Int> objectsToCreate)
