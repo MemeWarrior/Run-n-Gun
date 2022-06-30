@@ -22,9 +22,6 @@ public class Enemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
-
-        else if (distanceFromPlayer >= AttackingRange) ;
-        
     }
 
     private void OnDrawGizmosSelected()
