@@ -6,6 +6,9 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 6;
     public int health;
+
+    public SpriteRenderer playerSr;
+    public PlayerManagerSky playerManagerSky;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,11 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= amount;
 
-        if (health <= 0) {
-        
+        if (health <= 0)
+        {
+            playerSr.enabled = false;
+            playerManagerSky.enabled = false;
         }
+        
     }
 }
