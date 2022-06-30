@@ -23,6 +23,7 @@ public class PlayerManagerSky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Flip();
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }
@@ -36,5 +37,21 @@ public class PlayerManagerSky : MonoBehaviour
         }
 
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+
+    void Flip()
+    {
+        bool playerHasXAxisSpeed = Mathf.Abs(body.velocity.x) > Mathf.Epsilon;
+        if (playerHasXAxisSpeed)
+        {
+            if (body.velocity.x > 0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (body.velocity.x < -0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
     }
 }

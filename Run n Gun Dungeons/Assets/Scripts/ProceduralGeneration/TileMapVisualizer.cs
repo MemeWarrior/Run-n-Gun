@@ -9,19 +9,21 @@ public class TileMapVisualizer : MonoBehaviour
 {
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap;
-    public TileBase floorTile, wallTileTop; //Change to array of tiles later
+
+    public List<TileBase> floorTiles = new List<TileBase>();
+    public List<TileBase> wallTile = new List<TileBase>();
     public List<GameObject> objects;
     public List<GameObject> enemies;
     public GameObject spawn;
     private List<Vector2Int> objectLocations = new List<Vector2Int>();
 
     private float enemyDensity = 0.01f;
-    private float objectDensity = 0.05f;
+    private float objectDensity = 0.1f;
 
 
     public void paintFloorTiles(IEnumerable<Vector2Int> floorPos)
     {
-        paintTiles(floorPos, floorTilemap, floorTile);
+        paintTiles(floorPos, floorTilemap, floorTiles);
 
         List<Vector2Int> spawnPoint = floorPos.OrderBy( x => Random.value ).Take(1).ToList();
         setSpawn(spawnPoint);
@@ -44,7 +46,7 @@ public class TileMapVisualizer : MonoBehaviour
         placeEnemies(enemiesToCreate);
     }
 
-    private void paintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
+    private void paintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, List<TileBase> tile)
     {
         foreach (var position in positions)
         {
@@ -52,15 +54,17 @@ public class TileMapVisualizer : MonoBehaviour
         }
     }
 
-    private void paintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
+    private void paintSingleTile(Tilemap tilemap, List<TileBase> tile, Vector2Int position)
     {
         var tilePos = tilemap.WorldToCell((Vector3Int)position);
-        tilemap.SetTile(tilePos, tile);
+        int index = Random.Range(0, tile.Count - 1);
+        tilemap.SetTile(tilePos, tile[index]);
     }
 
     internal void PaintSingleBasicWall(Vector2Int pos)
     {
-      paintSingleTile(wallTilemap, wallTileTop, pos);
+      paintSingleTile(wallTilemap, wallTile, pos);
+      Debug.Log("painting walls!");
     }
 
     private void placeObjects(List<Vector2Int> objectsToCreate)
