@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weapon
+  - Object
+  - Enemy
+  - Spawn
   layers:
   - Default
   - TransparentFX
@@ -45,7 +48,10 @@ TagManager:
   - name: Ground
     uniqueID: 1696549631
     locked: 0
-  - name: Player
+  - name: Object
+    uniqueID: 759786869
+    locked: 0
+  - name: Entity
     uniqueID: 3199138273
     locked: 0
   - name: Wall
