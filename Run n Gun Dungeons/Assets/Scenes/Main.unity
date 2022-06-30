@@ -479,7 +479,7 @@ MonoBehaviour:
   - {fileID: 8213173626514163194, guid: bb2169316bf68f746abf28eeff64055b, type: 3}
   - {fileID: 9162597575538052331, guid: 24a099c6a25882f47951c53de31a3e73, type: 3}
   enemies:
-  - {fileID: 3605443626497790859, guid: 0f50f6cb40ed0ec47b7f57205f6f2d5e, type: 3}
+  - {fileID: 1863442685731340936, guid: 325d6cbbb2f2c0542a34f34e9e4b4d16, type: 3}
   spawn: {fileID: 8882635823668606529, guid: 2c7105006eb1a7249967c0160a60c0c0, type: 3}
 --- !u!4 &751100505
 Transform:

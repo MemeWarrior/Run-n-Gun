@@ -17,7 +17,7 @@ public class TileMapVisualizer : MonoBehaviour
     public GameObject spawn;
     private List<Vector2Int> objectLocations = new List<Vector2Int>();
 
-    private float enemyDensity = 0.01f;
+    private float enemyDensity = 0.0008f;
     private float objectDensity = 0.1f;
 
 
