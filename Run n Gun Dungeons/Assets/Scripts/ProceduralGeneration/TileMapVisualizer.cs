@@ -101,6 +101,7 @@ public class TileMapVisualizer : MonoBehaviour
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Object");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject spawn = GameObject.FindWithTag("Spawn");
         for(int i=0; i< objects.Length; i++)
          {
              Destroy(objects[i]);
@@ -111,6 +112,7 @@ public class TileMapVisualizer : MonoBehaviour
               Destroy(enemies[i]);
               DestroyImmediate(enemies[i]);
           }
+          Destroy(spawn);
 
         floorTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();

@@ -14,10 +14,29 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
   public SRWData roomGenerationParams;
   private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
   private HashSet<Vector2Int> floorPos, corPos;
+
+  public GameObject player;
+
+  void Start()
+  {
+      TileMapVisualizer.Clear();
+      RunProceduralGeneration();
+
+      var spawn = new Vector2(GameObject.FindWithTag("Spawn").transform.position.x, GameObject.FindWithTag("Spawn").transform.position.y);
+      player.transform.position = spawn;
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+
+  }
+
   protected override void RunProceduralGeneration()
   {
     CorridorFirstGeneration();
   }
+
   private void CorridorFirstGeneration()
   {
     HashSet<Vector2Int> floorPos = new HashSet<Vector2Int>();
