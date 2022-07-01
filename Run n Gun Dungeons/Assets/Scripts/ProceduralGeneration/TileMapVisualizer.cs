@@ -126,6 +126,7 @@ public class TileMapVisualizer : MonoBehaviour
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Object");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject spawn = GameObject.FindWithTag("Spawn");
+        GameObject portal = GameObject.FindWithTag("Portal");
         for(int i=0; i< objects.Length; i++)
          {
              Destroy(objects[i]);
@@ -137,6 +138,7 @@ public class TileMapVisualizer : MonoBehaviour
               DestroyImmediate(enemies[i]);
           }
           Destroy(spawn);
+          Destroy(portal);
 
         floorTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
