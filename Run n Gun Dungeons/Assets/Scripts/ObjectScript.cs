@@ -20,7 +20,22 @@ public class ObjectScript : MonoBehaviour
     {
         if(health <= 0 && isBreakable)
         {
-            Destroy(gameObject);
+            if(gameObject.name == "Object1(Clone)") //Mush
+            {
+                Instantiate(Resources.Load("MushRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            if(gameObject.name == "Object2(Clone)") //Fossil
+            {
+                Instantiate(Resources.Load("FossilRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            if(gameObject.name == "Object3(Clone)") //Wood
+            {
+                Instantiate(Resources.Load("WoodRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+
         }
     }
 
