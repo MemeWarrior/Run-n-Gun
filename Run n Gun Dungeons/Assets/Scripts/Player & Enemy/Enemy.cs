@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float health;
 
 
+
     void Start()
     {
         Invoke("Chase", 5);
@@ -24,7 +25,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(health <= 0)
+ 
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
