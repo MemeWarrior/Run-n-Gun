@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Spawn
   - Portal
+  - InteractText
+  - PickUpText
   layers:
   - Default
   - TransparentFX
