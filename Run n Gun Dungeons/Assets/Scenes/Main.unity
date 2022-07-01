@@ -815,7 +815,7 @@ MonoBehaviour:
   pistol: {fileID: 8300000, guid: c230bd4324112664d9329bf525f24c19, type: 3}
   shotgun: {fileID: 8300000, guid: 7013014210bc8f54cbeb5492c625b05d, type: 3}
   sniper: {fileID: 8300000, guid: a35de07d4677db54cb7581734056c596, type: 3}
-  audioSrc: {fileID: 380274147}
+  audioSrc: {fileID: 0}
 --- !u!4 &380274146
 Transform:
   m_ObjectHideFlags: 0
@@ -26792,7 +26792,7 @@ MonoBehaviour:
   sniper: {fileID: 6480159791024406378, guid: dacd3607585e03742bb927f401800056, type: 3}
   offset: 0
   shotPoint: {fileID: 970924656}
-  timeBtwShots: 0
+  timeBtwShots: 10
   isPick: 0
   currentweapon: 
   shotgunAngle: 7
