@@ -20518,6 +20518,7 @@ GameObject:
   - component: {fileID: 1871548999}
   - component: {fileID: 1871548998}
   - component: {fileID: 1871549000}
+  - component: {fileID: 1871549001}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -20687,6 +20688,29 @@ MonoBehaviour:
   playerSr: {fileID: 1871548996}
   playerManagerSky: {fileID: 1871548994}
   invincible: 0
+--- !u!114 &1871549001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871548993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08928e40c58dcbf408366ff26a15c190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 6
+  emptyHeart: {fileID: 21300000, guid: 60f9cb5d08c9e054ab2bfaf6b73f8372, type: 3}
+  fullHeart: {fileID: 21300000, guid: 960c7a1e69794ea4c8b09af7a1497c88, type: 3}
+  hearts:
+  - {fileID: 1076226585}
+  - {fileID: 2055270204}
+  - {fileID: 222921314}
+  - {fileID: 306745117}
+  - {fileID: 9612888}
+  - {fileID: 889937143}
+  playerHealth: {fileID: 1871549000}
 --- !u!1 &1911445512
 GameObject:
   m_ObjectHideFlags: 0
