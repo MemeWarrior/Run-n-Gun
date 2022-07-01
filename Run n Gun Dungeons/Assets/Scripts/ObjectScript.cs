@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-    public int health;
+    public float health;
     public Vector2Int size;
     public bool isBreakable = false;
     public bool invcincibility = false;
@@ -26,6 +26,6 @@ public class ObjectScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        
+
     }
 }

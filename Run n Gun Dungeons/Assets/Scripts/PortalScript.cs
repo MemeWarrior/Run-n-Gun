@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class PortalScript : MonoBehaviour
+{
+    public Collider2D target;
+    public bool OnPlayer = false;
+    public bool PlayerClicked = false;
+    public TextMeshProUGUI interactText;
+
+    void Update(){
+        if(OnPlayer && Input.GetKeyDown(KeyCode.E))
+        {
+            PlayerClicked = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            target = other;
+            OnPlayer = true;
+            interactText.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        OnPlayer = false;
+        interactText.gameObject.SetActive(false);
+    }
+}
