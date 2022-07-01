@@ -9,18 +9,17 @@ public class Enemy : MonoBehaviour
     public float lineOfSite;
     public float AttackingRange;
     public int health;
-    public GameObject deadSnake;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        
     }
 
     void Update()
     {
         if(health <= 0)
         {
+            Instantiate(Resources.Load("DeadSnake"), transform.position, Quaternion.identity);
             Destroy(gameObject);
 
         }
