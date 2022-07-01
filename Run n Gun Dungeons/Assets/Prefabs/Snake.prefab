@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  lineOfSite: 7
+  lineOfSite: 15
   AttackingRange: 1.6
   health: 3
 --- !u!114 &3423911071985699750
