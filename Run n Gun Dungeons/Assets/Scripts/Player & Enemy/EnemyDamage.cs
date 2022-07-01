@@ -6,6 +6,7 @@ public class EnemyDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public int damage = 2;
+    public GameObject SoundManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,9 @@ public class EnemyDamage : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
+            
             playerHealth.TakeDamage(1);
+            SoundManager.GetComponent<SoundManager>().PlaySnake();
         }
 
     }
