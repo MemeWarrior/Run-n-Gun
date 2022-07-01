@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     public float lineOfSite;
     public float AttackingRange;
-    public float health;
+    public int health;
 
     void Start()
     {
@@ -34,5 +34,10 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
         Gizmos.DrawWireSphere(transform.position, AttackingRange);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
