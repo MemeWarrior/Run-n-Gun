@@ -10,11 +10,11 @@ public class PortalScript : MonoBehaviour
     public Collider2D target;
     public bool OnPlayer = false;
     public bool PlayerClicked = false;
-    private TextMeshProUGUI interactText;
+    private GameObject canvas;
 
     void Start()
     {
-        interactText = GameObject.Find("Interact");
+        canvas = GameObject.FindWithTag("Canvas");
     }
 
     void Update(){
@@ -30,13 +30,13 @@ public class PortalScript : MonoBehaviour
         {
             target = other;
             OnPlayer = true;
-            interactText.gameObject.SetActive(true);
+            canvas.transform.GetChild(2).gameObject.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         OnPlayer = false;
-        interactText.gameObject.SetActive(false);
+        canvas.transform.GetChild(2).gameObject.SetActive(false);
     }
 }

@@ -156,4 +156,3 @@ MonoBehaviour:
   target: {fileID: 4890282316715543989}
   OnPlayer: 0
   PlayerClicked: 0
-  interactText: {fileID: 0}

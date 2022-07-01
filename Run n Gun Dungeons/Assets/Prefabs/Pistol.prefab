@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2602809680149657784}
   - component: {fileID: 2602809680149657787}
   - component: {fileID: 2602809680149657785}
+  - component: {fileID: 38652802370408144}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Weapon
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2602809680149657786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.65, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3a4048897800fab4a83ca8da35866552, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: aecd0745e77bc2a4c9ad1ba56f1d3c41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.2184887, y: -0.29487848}
+  m_Offset: {x: 0.9860892, y: -0.18360865}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.59002775, y: 0.49589613}
+    pivot: {x: 0.20683289, y: 0.44049448}
     oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.531559, y: 7.257247}
+  m_Size: {x: 7.8610773, y: 5.254386}
   m_EdgeRadius: 0
+--- !u!114 &38652802370408144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602809680149657786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d318abc3d8a09c741933d5720ada3e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 2602809680149657786}
+  target: {fileID: 0}
+  OnPlayer: 0
