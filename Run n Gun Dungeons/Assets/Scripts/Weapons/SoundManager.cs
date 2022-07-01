@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public  AudioClip pistol, shotgun, sniper;
+    public  AudioClip pistol, shotgun, sniper, snake;
     public  AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
         pistol = Resources.Load<AudioClip>("PistolSound");
         shotgun = Resources.Load<AudioClip>("ShotgunSound");
         sniper = Resources.Load<AudioClip>("SniperSound");
+        snake = Resources.Load<AudioClip>("SnakeAttack");
     }
 
     // Update is called once per frame
@@ -35,5 +36,10 @@ public class SoundManager : MonoBehaviour
     public  void PlaySniper()
     {
         audioSrc.PlayOneShot(sniper);
+    }
+
+    public  void PlaySnake()
+    {
+        audioSrc.PlayOneShot(snake);
     }
 }

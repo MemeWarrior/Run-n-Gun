@@ -31,9 +31,10 @@ public class PlayerManagerSky : MonoBehaviour
     void Run()
     {
         bool playerHasXAxisSpeed = Mathf.Abs(body.velocity.x) > Mathf.Epsilon;
+        bool playerHasYAxisSpeed = Mathf.Abs(body.velocity.y) > Mathf.Epsilon;
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        animator.SetBool("Running", playerHasXAxisSpeed);
+        animator.SetBool("Running", playerHasXAxisSpeed || playerHasYAxisSpeed);
     }
     
 
