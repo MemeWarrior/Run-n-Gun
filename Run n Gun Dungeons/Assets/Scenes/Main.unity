@@ -26792,7 +26792,7 @@ MonoBehaviour:
   sniper: {fileID: 6480159791024406378, guid: dacd3607585e03742bb927f401800056, type: 3}
   offset: 0
   shotPoint: {fileID: 970924656}
-  timeBtwShots: 10
+  timeBtwShots: 0
   isPick: 0
   currentweapon: 
   shotgunAngle: 7
