@@ -9,9 +9,11 @@ public class Enemy : MonoBehaviour
     public float lineOfSite;
     public float AttackingRange;
     public int health;
+    Rigidbody2D body;
 
     void Start()
     {
+        body = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -40,5 +42,21 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+    }
+
+    void Flip()
+    {
+        bool playerHasXAxisSpeed = Mathf.Abs(body.velocity.x) > Mathf.Epsilon;
+        if (playerHasXAxisSpeed)
+        {
+            if (body.velocity.x > 0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (body.velocity.x < -0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
     }
 }
