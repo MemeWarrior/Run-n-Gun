@@ -43,5 +43,13 @@ public class Bullet : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(damage);
             Debug.Log("Hit something");
         }
+        else if(other.gameObject.CompareTag("Object"))
+        {
+            if(other.GetComponent<ObjectScript>().isBreakable)
+            {
+                Destroy(gameObject);
+                other.GetComponent<Enemy>().TakeDamage(damage);
+            }
+        }
     }
 }

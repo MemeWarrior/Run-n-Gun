@@ -9,11 +9,12 @@ public class Enemy : MonoBehaviour
     public float lineOfSite;
     public float AttackingRange;
     public int health;
+    public GameObject deadSnake;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
+        
     }
 
     void Update()
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+
         }
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > AttackingRange)
