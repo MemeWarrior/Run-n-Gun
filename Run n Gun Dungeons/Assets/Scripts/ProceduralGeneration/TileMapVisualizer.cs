@@ -40,7 +40,7 @@ public class TileMapVisualizer : MonoBehaviour
         //Place enemies
         int enemiesCount = Mathf.RoundToInt(floorPos.Count()*enemyDensity);
         Debug.Log("Tiles: " + floorPos.Count());
-        Debug.Log("Objects: "+ objectCount);
+        Debug.Log("Objects: "+ enemiesCount);
 
         List<Vector2Int> enemiesToCreate = floorPos.OrderBy( x => Random.value ).Take(objectCount).ToList();
         placeEnemies(enemiesToCreate);
