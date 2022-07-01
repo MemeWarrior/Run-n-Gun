@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rg2d;
     private Vector3 startPos;
 
-    private CameraShake shake;
+    //private CameraShake shake;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         rg2d.velocity = transform.right * speed;
         startPos = transform.position;
 
-        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
+        //shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
     }
 
     void Update()
@@ -30,17 +30,30 @@ public class Bullet : MonoBehaviour
             //Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-    } 
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            shake.CamShake();
+            //shake.CamShake();
             //Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            //other.GetComponent<Enemy>().TakeDamage(damage);
+            other.GetComponent<Enemy>().TakeDamage(damage);
+            Debug.Log("Hit something");
+        }
+        else if(other.gameObject.CompareTag("Object"))
+        {
+            if(other.GetComponent<ObjectScript>().isBreakable)
+            {
+                Destroy(gameObject);
+                other.GetComponent<ObjectScript>().TakeDamage(damage);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

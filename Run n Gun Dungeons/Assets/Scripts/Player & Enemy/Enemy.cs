@@ -8,8 +8,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     public float lineOfSite;
     public float AttackingRange;
-    public float health;
-
+    public int health;
 
 
     void Start()
@@ -20,7 +19,6 @@ public class Enemy : MonoBehaviour
     public void Chase()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
     }
 
     void Update()
@@ -28,7 +26,9 @@ public class Enemy : MonoBehaviour
  
         if (health <= 0)
         {
+            Instantiate(Resources.Load("DeadSnake"), transform.position, Quaternion.identity);
             Destroy(gameObject);
+
         }
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > AttackingRange)
@@ -42,5 +42,10 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
         Gizmos.DrawWireSphere(transform.position, AttackingRange);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }

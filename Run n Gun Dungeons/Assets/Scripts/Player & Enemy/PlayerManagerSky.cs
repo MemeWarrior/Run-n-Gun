@@ -18,15 +18,25 @@ public class PlayerManagerSky : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Flip();
+        Run();
+    }
+
+    void Run()
+    {
+        bool playerHasXAxisSpeed = Mathf.Abs(body.velocity.x) > Mathf.Epsilon;
+        bool playerHasYAxisSpeed = Mathf.Abs(body.velocity.y) > Mathf.Epsilon;
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        animator.SetBool("Running", playerHasXAxisSpeed || playerHasYAxisSpeed);
     }
+    
 
     private void FixedUpdate()
     {

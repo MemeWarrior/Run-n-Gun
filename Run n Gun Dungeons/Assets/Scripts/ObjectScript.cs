@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-    public float health;
+    public int health;
     public Vector2Int size;
     public bool isBreakable = false;
     public bool invcincibility = false;
@@ -20,12 +20,27 @@ public class ObjectScript : MonoBehaviour
     {
         if(health <= 0 && isBreakable)
         {
-            Destroy(gameObject);
+            if(gameObject.name == "Object1(Clone)") //Mush
+            {
+                Instantiate(Resources.Load("MushRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            if(gameObject.name == "Object2(Clone)") //Fossil
+            {
+                Instantiate(Resources.Load("FossilRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            if(gameObject.name == "Object3(Clone)") //Wood
+            {
+                Instantiate(Resources.Load("WoodRemains"), transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    public void TakeDamage(int damage)
     {
-
+        health -= damage;
     }
 }

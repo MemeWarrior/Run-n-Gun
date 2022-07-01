@@ -48,6 +48,8 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
       if(portalScript.PlayerClicked)
       {
           BeginNewGame();
+          var spawn = new Vector2(GameObject.FindWithTag("Spawn").transform.position.x, GameObject.FindWithTag("Spawn").transform.position.y);
+          player.transform.position = spawn;
       }
   }
 

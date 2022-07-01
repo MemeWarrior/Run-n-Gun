@@ -14,6 +14,7 @@ public class TileMapVisualizer : MonoBehaviour
     public List<TileBase> wallTile = new List<TileBase>();
     public List<GameObject> objects;
     public List<GameObject> enemies;
+    public List<GameObject> weapons;
     public GameObject spawn;
     public GameObject portal;
     private List<Vector2Int> objectLocations = new List<Vector2Int>();
@@ -41,6 +42,10 @@ public class TileMapVisualizer : MonoBehaviour
         List<Vector2Int> objectsToCreate = floorPos.OrderBy( x => Random.value ).Take(objectCount).ToList();
 
         placeObjects(objectsToCreate);
+
+        //Place weapons
+        List<Vector2Int> weaponsToCreate = floorPos.OrderBy( x => Random.value ).Take(3).ToList();
+        placeWeapons(weaponsToCreate);
 
         //Place enemies
         int enemiesCount = Mathf.RoundToInt(floorPos.Count()*enemyDensity);
@@ -81,6 +86,19 @@ public class TileMapVisualizer : MonoBehaviour
                 int index = Random.Range(0, objects.Count);
                 Instantiate (objects[index], new Vector3(objectPosition.x, objectPosition.y), objects[index].transform.rotation);
                 objectLocations.Add(objectPosition);
+            }
+        }
+    }
+
+    private void placeWeapons(List<Vector2Int> weaponsToCreate)
+    {
+        foreach (var weaponPosition in weaponsToCreate)
+        {
+            if(!objectLocations.Contains(weaponPosition) && !wallLocations.Contains(weaponPosition))
+            {
+                int index = Random.Range(0, weapons.Count);
+                Instantiate (weapons[index], new Vector3(weaponPosition.x, weaponPosition.y), weapons[index].transform.rotation);
+                objectLocations.Add(weaponPosition);
             }
         }
     }
