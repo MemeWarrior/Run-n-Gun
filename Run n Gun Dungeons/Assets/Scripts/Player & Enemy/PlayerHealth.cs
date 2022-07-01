@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
             playerManagerSky.enabled = false;
             gameOverBlack.gameObject.SetActive(true);
             gameOver.gameObject.SetActive(true);
+            StartCoroutine("ReturnToMenu");
         }
 
     }
@@ -64,6 +65,12 @@ public class PlayerHealth : MonoBehaviour
         invincible = true;
         yield return new WaitForSeconds(1.5f);
         invincible = false;
+    }
+
+    private IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(0);
     }
 
 
