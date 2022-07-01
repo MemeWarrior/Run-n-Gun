@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     public PlayerManagerSky playerManagerSky;
     int timer = 0;
     public bool invincible = false;
+    public TextMeshProUGUI gameOver;
+    public Image gameOverBlack;
 
     Material mWhite;
     Material mDefault;
@@ -22,11 +27,13 @@ public class PlayerHealth : MonoBehaviour
         sRend = GetComponent<SpriteRenderer>();
         mDefault = sRend.material;
         mWhite = Resources.Load("mWhite", typeof(Material)) as Material;
+        gameOver.gameObject.SetActive(false);
+        gameOverBlack.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        
+
     }
     public void TakeDamage(int amount)
     {
@@ -39,24 +46,33 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= 0;
         }
-        
+
 
         if (health <= 0)
         {
             playerSr.enabled = false;
             playerManagerSky.enabled = false;
+            gameOverBlack.gameObject.SetActive(true);
+            gameOver.gameObject.SetActive(true);
+            StartCoroutine("ReturnToMenu");
         }
-        
+
     }
 
     IEnumerator InvinciblePeriod()
     {
-        
+
         invincible = true;
         yield return new WaitForSeconds(1.5f);
         invincible = false;
     }
-    
+
+    private IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(0);
+    }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -71,7 +87,7 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine("Flash");
                 StartCoroutine("InvinciblePeriod");
             }
-            
+
         }
     }
     void Recalc()
