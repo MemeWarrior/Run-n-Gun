@@ -10,7 +10,13 @@ public class Enemy : MonoBehaviour
     public float AttackingRange;
     public float health;
 
+
     void Start()
+    {
+        Invoke("Chase", 5);
+    }
+
+    public void Chase()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 

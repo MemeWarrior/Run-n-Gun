@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     Material mDefault;
     SpriteRenderer sRend;
     // Start is called before the first frame update
+
     void Start()
     {
         health = maxHealth;
