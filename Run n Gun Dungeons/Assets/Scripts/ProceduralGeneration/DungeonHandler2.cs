@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class DungeonHandler2 : SimpleRandomWalkGenerator
 {
   [SerializeField]
@@ -12,6 +16,7 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
   private float roomPercent = 0.8f;
   [SerializeField]
   public SRWData roomGenerationParams;
+  public int enemyCount;
   private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
   private HashSet<Vector2Int> floorPos, corPos;
 
@@ -19,17 +24,32 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
 
   void Start()
   {
-      TileMapVisualizer.Clear();
-      RunProceduralGeneration();
-
-      var spawn = new Vector2(GameObject.FindWithTag("Spawn").transform.position.x, GameObject.FindWithTag("Spawn").transform.position.y);
-      player.transform.position = spawn;
+      BeginGame();
   }
 
   // Update is called once per frame
   void Update()
   {
+      enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
+      if (enemyCount == 0)
+      {
+          ResetDungeon();
+      }
+  }
+
+  void ResetDungeon()
+  {
+
+  }
+
+  void BeginGame()
+  {
+      TileMapVisualizer.Clear();
+      RunProceduralGeneration();
+
+      var spawn = new Vector2(GameObject.FindWithTag("Spawn").transform.position.x, GameObject.FindWithTag("Spawn").transform.position.y);
+      player.transform.position = spawn;
   }
 
   protected override void RunProceduralGeneration()

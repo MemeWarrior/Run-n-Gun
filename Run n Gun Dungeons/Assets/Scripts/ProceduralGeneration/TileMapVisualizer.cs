@@ -15,7 +15,9 @@ public class TileMapVisualizer : MonoBehaviour
     public List<GameObject> objects;
     public List<GameObject> enemies;
     public GameObject spawn;
+    public GameObject portal;
     private List<Vector2Int> objectLocations = new List<Vector2Int>();
+    private List<Vector2Int> wallLocations = new List<Vector2Int>();
 
     private float enemyDensity = 0.015f;
     private float objectDensity = 0.1f;
@@ -27,6 +29,9 @@ public class TileMapVisualizer : MonoBehaviour
 
         List<Vector2Int> spawnPoint = floorPos.OrderBy( x => Random.value ).Take(1).ToList();
         setSpawn(spawnPoint);
+
+        List<Vector2Int> portalPoint = floorPos.OrderBy( x => Random.value ).Take(1).ToList();
+        makePortal(portalPoint);
 
         //Place objects
         int objectCount = Mathf.RoundToInt(floorPos.Count()*objectDensity);
@@ -64,13 +69,14 @@ public class TileMapVisualizer : MonoBehaviour
     internal void PaintSingleBasicWall(Vector2Int pos)
     {
       paintSingleTile(wallTilemap, wallTile, pos);
+      wallLocations.Add(pos);
     }
 
     private void placeObjects(List<Vector2Int> objectsToCreate)
     {
         foreach (var objectPosition in objectsToCreate)
         {
-            if(!objectLocations.Contains(objectPosition))
+            if(!objectLocations.Contains(objectPosition) && !wallLocations.Contains(objectPosition))
             {
                 int index = Random.Range(0, objects.Count);
                 Instantiate (objects[index], new Vector3(objectPosition.x, objectPosition.y), objects[index].transform.rotation);
@@ -83,7 +89,7 @@ public class TileMapVisualizer : MonoBehaviour
     {
         foreach (var enemyPosition in enemiesToCreate)
         {
-            if(!objectLocations.Contains(enemyPosition))
+            if(!objectLocations.Contains(enemyPosition) && !wallLocations.Contains(enemyPosition))
             {
                 int index = Random.Range(0, enemies.Count);
                 Instantiate (enemies[index], new Vector3(enemyPosition.x, enemyPosition.y), enemies[index].transform.rotation);
@@ -95,8 +101,23 @@ public class TileMapVisualizer : MonoBehaviour
     {
         foreach (var position in spawnPoint)
         {
-            Instantiate (spawn, new Vector3(position.x, position.y), spawn.transform.rotation);
-            objectLocations.Add(position);
+            if(!wallLocations.Contains(position))
+            {
+                Instantiate (spawn, new Vector3(position.x, position.y), spawn.transform.rotation);
+                objectLocations.Add(position);
+            }
+        }
+    }
+
+    private void makePortal(List<Vector2Int> portalPoint)
+    {
+        foreach (var position in portalPoint)
+        {
+            if(!wallLocations.Contains(position))
+            {
+                Instantiate (portal, new Vector3(position.x, position.y), spawn.transform.rotation);
+                objectLocations.Add(position);
+            }
         }
     }
 
