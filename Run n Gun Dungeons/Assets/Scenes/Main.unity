@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 301139443}
   m_Layer: 5
   m_Name: Interact
-  m_TagString: Untagged
+  m_TagString: InteractText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +617,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1863442685731340936, guid: 325d6cbbb2f2c0542a34f34e9e4b4d16, type: 3}
   spawn: {fileID: 8882635823668606529, guid: 2c7105006eb1a7249967c0160a60c0c0, type: 3}
-  portal: {fileID: 0}
+  portal: {fileID: 4890282316715543991, guid: 8d015338ee7182d40a5ea421b93d84a4, type: 3}
 --- !u!4 &751100505
 Transform:
   m_ObjectHideFlags: 0
@@ -26149,7 +26149,7 @@ GameObject:
   - component: {fileID: 2090691856}
   m_Layer: 5
   m_Name: PickUp
-  m_TagString: Untagged
+  m_TagString: PickUpText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

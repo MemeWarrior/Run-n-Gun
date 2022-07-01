@@ -21,10 +21,12 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
   private HashSet<Vector2Int> floorPos, corPos;
 
   public GameObject player;
+  private GameObject portal;
+  private PortalScript portalScript;
 
   void Start()
   {
-      BeginGame();
+      BeginNewGame();
   }
 
   // Update is called once per frame
@@ -40,16 +42,26 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
 
   void ResetDungeon()
   {
+      portalScript = portal.GetComponent<PortalScript>();
 
+      portal.SetActive(true);
+      if(portalScript.PlayerClicked)
+      {
+          BeginNewGame();
+      }
   }
 
-  void BeginGame()
+  void BeginNewGame()
   {
+
       TileMapVisualizer.Clear();
       RunProceduralGeneration();
 
       var spawn = new Vector2(GameObject.FindWithTag("Spawn").transform.position.x, GameObject.FindWithTag("Spawn").transform.position.y);
       player.transform.position = spawn;
+
+      portal = GameObject.FindWithTag("Portal");
+      portal.SetActive(false);
   }
 
   protected override void RunProceduralGeneration()
