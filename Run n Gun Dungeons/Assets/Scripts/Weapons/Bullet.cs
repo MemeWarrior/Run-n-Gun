@@ -50,6 +50,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 other.GetComponent<ObjectScript>().TakeDamage(damage);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

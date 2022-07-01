@@ -35,7 +35,7 @@ public class ObjectScript : MonoBehaviour
                 Instantiate(Resources.Load("WoodRemains"), transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-
+            
         }
     }
 
