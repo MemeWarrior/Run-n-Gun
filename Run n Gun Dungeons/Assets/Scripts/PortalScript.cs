@@ -10,7 +10,12 @@ public class PortalScript : MonoBehaviour
     public Collider2D target;
     public bool OnPlayer = false;
     public bool PlayerClicked = false;
-    public TextMeshProUGUI interactText;
+    private TextMeshProUGUI interactText;
+
+    void Start()
+    {
+        interactText = GameObject.Find("Interact");
+    }
 
     void Update(){
         if(OnPlayer && Input.GetKeyDown(KeyCode.E))
