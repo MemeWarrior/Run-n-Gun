@@ -53,7 +53,6 @@ public class DungeonHandler2 : SimpleRandomWalkGenerator
 
   void BeginNewGame()
   {
-
       TileMapVisualizer.Clear();
       RunProceduralGeneration();
 
